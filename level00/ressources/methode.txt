@@ -1,0 +1,12 @@
+Use find command to search for files that are owned by user flag00 or group00
+Command:
+-user specify user for a file
+-group specify group for a file
+-redirect error output to null and exclude /proc files
+level00@SnowCrash:~$ find / -user flag00 -group flag00 2>/dev/null | grep -v proc
+/usr/sbin/john
+/rofs/usr/sbin/john
+
+inside these 2 files we have "cdiiddwpgswtgt"  it looks like a password but
+it does not work so by testing multi uncrypting method on dcode.fr we find
+a string that looks like a password: "nottoohardhere"

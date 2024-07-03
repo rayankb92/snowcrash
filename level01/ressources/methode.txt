@@ -1,0 +1,5 @@
+grep -rn --exclude-dir={proc,sys,dev,run} "flag01" / 2>/dev/null
+john passwd.txt
+john --show passwd.txt
+?:abcdefg
+
