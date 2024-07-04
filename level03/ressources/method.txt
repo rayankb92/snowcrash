@@ -4,6 +4,9 @@ scp -P 4242 level03@localhost:/home/user/level03/level03 .
 open with ghidra to reverse the binary
 
 the code reversed is:
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
 void main(void)
 
 {

