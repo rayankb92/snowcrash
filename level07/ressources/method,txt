@@ -1,0 +1,10 @@
+by decompile the level07 file in ghidra 
+we can see that the script is calling 
+/bin/echo with the LOGNAME environment variable
+so we can inject a command in the LOGNAME variable
+
+level07@SnowCrash:~$ export LOGNAME="; getflag"
+
+level07@SnowCrash:~$ ./level07 
+
+Check flag.Here is your token : fiumuikeil55xe9cu4dood66h

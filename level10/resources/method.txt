@@ -1,0 +1,33 @@
+we have 2 files level10 wich is an executable file and token
+
+by uncompile level10 we can see the program is taking  2 arguments
+wich are a file and a host.
+the program check with access if you can read the file
+and if it's possible it will send the file to the host at port 6969
+
+int the man of access we can see a warning that the function is not secure:
+ Warning: Using access() to check if a user is authorized to, for example, open a file before actually doing so using open(2) cre‐
+       ates a security hole, because the user might exploit the short time interval between checking and opening the file to  manipulate
+       it.
+
+we can exploit this by creating in /tmp a file with access rights to read it
+and then we create a script that will create a symlink from /tmp/faketoken to
+/tmp/file and overwrite the symlink with the /level10/token file in a loop
+
+listen to the port 6969 with nc -l 6969
+$(while true; do ln -sf /tmp/file /tmp/faketoken; ln -sf token /tmp/faketoken; done)
+./level10 /tmp/faketoken 127.0.0.1
+
+so access will search for the rights of /tmp/faketoken->/tmp/file
+access answer OK because we have the rights to read /tmp/faketoken
+the loop is still running and the symlink is overwritten with the token file
+and then the program open the file /tmp/faketoken->/level10/token with the uid of owner
+and send it to localhost:6969
+
+this is call a race condition
+
+we get the password for flag10 : woupa2yuojeeaaed06riuj63c
+then we connect with flag10 and get the flag
+
+
+
