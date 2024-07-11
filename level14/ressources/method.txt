@@ -1,0 +1,8 @@
+breakpoint ptrace
+breakpoint  getuid
+run
+next
+set $eax = 0
+continue
+next
+set $eax=3014
